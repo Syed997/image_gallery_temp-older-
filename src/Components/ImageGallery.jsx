@@ -4,13 +4,26 @@ import React, { useState } from 'react';
 const ImageGallery = () => {
     const [images, setImages] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
-    
+
+    // // const photos = [
+
+    // ];
+    // const handleStoredImage = () => {
+    //     const obj = {
+    //         id: 1,
+    //         file: "images/image-1.webp"
+    //         }
+    //         setImages(obj);
+    //     }
+    // handleStoredImage();
     const handleImageUpload = (event) => {
         const newImages = Array.from(event.target.files).map((file) => ({
             id: Date.now(),
             file,
         }));
+        console.log(newImages);
         setImages([...images, ...newImages]);
+        
     };
 
     
@@ -28,6 +41,8 @@ const ImageGallery = () => {
         setImages(remainingImages);
         setSelectedImages([]); 
     };
+    
+    
 
     return (
         <div className="container mx-auto p-4">
@@ -60,6 +75,7 @@ const ImageGallery = () => {
                             alt={`Image ${index}`}
                             className="w-full h-auto rounded-lg "
                         />
+                        {console.log(index)}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <input
                                 type="checkbox"
