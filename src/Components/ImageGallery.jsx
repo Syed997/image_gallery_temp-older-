@@ -18,10 +18,10 @@ const ImageGallery = () => {
     // handleStoredImage();
     const handleImageUpload = (event) => {
         const newImages = Array.from(event.target.files).map((file) => ({
-            id: Date.now(),
+            id: Math.random(),
             file,
         }));
-        console.log(newImages);
+
         setImages([...images, ...newImages]);
         
     };
@@ -67,7 +67,7 @@ const ImageGallery = () => {
                     </button>
                 </div>
             )}
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-5 checked:brightness-75">
                 {images.map((image, index) => (
                     <div key={image.id} className="relative group hover:brightness-50">
                         <img
@@ -75,13 +75,13 @@ const ImageGallery = () => {
                             alt={`Image ${index}`}
                             className="w-full h-auto rounded-lg "
                         />
-                        {console.log(index)}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity ease-in">
                             <input
                                 type="checkbox"
                                 checked={selectedImages.includes(image.id)}
                                 onChange={() => handleImageSelect(image.id)}
-                                className="absolute top-2 right-2 z-10"
+                                className="absolute top-2 left-2"
                             />
                         </div>
 
