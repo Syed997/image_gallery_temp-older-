@@ -67,7 +67,7 @@ const ImageGallery = () => {
                     </button>
                 </div>
             )}
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-5 checked:brightness-75">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5 checked:brightness-75">
                 {images.map((image, index) => (
                     <div key={image.id} className="relative group image-container hover:brightness-50">
                         <img
